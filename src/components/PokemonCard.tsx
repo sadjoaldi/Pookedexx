@@ -1,15 +1,15 @@
 type Pokemon = {
-  name: string;
-  imgSrc?: string;
+  name: { name: string };
+  imgSrc?: { imgSrc: string };
 };
 
 const PokemonCard = ({ name, imgSrc }: Pokemon) => {
   return (
     <>
       <figure>
-        {imgSrc ? <img src={imgSrc} alt={name} /> : <p>"???"</p>}
+        {imgSrc ? <img src={imgSrc.imgSrc} alt={name.name} /> : <p>"???"</p>}
 
-        <figcaption> {name} </figcaption>
+        <figcaption> {name.name} </figcaption>
       </figure>
     </>
   );
