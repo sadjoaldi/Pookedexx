@@ -34,32 +34,29 @@ const pokemonList = [
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
-  const handleClickNext = () => {
-    setPokemonIndex(pokemonIndex + 1);
-  };
+  // const handleChange = () => {
+  //   setPokemonIndex(
 
-  const handleClickPrev = () => {
-    setPokemonIndex(pokemonIndex - 1);
-  };
+  //   );
+  // };
 
   console.log(pokemonIndex);
 
   return (
     <>
       <MyTitle />
+      {pokemonList.map((pokemon, key) => {
+        console.log(pokemon);
+        return (
+          <button key={key} onClick={() => setPokemonIndex(key)}>
+            {pokemon.name}
+          </button>
+        );
+      })}
       <PokemonCard
         name={pokemonList[pokemonIndex]}
         imgSrc={pokemonList[pokemonIndex]}
       />
-      <button onClick={handleClickPrev} disabled={pokemonIndex === 0}>
-        Prev
-      </button>
-      <button
-        onClick={handleClickNext}
-        disabled={pokemonIndex === pokemonList.length - 1}
-      >
-        Next
-      </button>
     </>
   );
 }
